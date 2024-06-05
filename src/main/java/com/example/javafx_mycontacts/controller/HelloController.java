@@ -1,4 +1,4 @@
-package com.example.javafx_mycontacts;
+package com.example.javafx_mycontacts.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
