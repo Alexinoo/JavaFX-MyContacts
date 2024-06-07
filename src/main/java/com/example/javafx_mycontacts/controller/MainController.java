@@ -1,10 +1,12 @@
 package com.example.javafx_mycontacts.controller;
 
+import com.example.javafx_mycontacts.model.Contact;
+import com.example.javafx_mycontacts.model.ContactData;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
-import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
@@ -15,6 +17,17 @@ public class MainController {
     @FXML
     private BorderPane mainPane;
 
+    private ContactData data;
+
+    @FXML
+    private TableView<Contact> contactsTable;
+
+    public void initialize(){
+        data = new ContactData();
+        data.loadContacts();
+        contactsTable.setItems(data.getContacts());
+    }
+
     @FXML
     private void showAddContactDialog() {
 
@@ -22,7 +35,7 @@ public class MainController {
         dialog.initOwner(mainPane.getScene().getWindow());
         dialog.setTitle("Add New Contact");
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("contact-dialog.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("/com/example/javafx_mycontacts/contact-dialog.fxml"));
 
         try{
             dialog.getDialogPane().setContent(fxmlLoader.load());
@@ -37,7 +50,11 @@ public class MainController {
 
         Optional<ButtonType> result = dialog.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK){
+            ContactController contactController = fxmlLoader.getController();
 
+            Contact newContact = contactController.getNewContact();
+            data.addContact(newContact);
+            data.saveContacts();
         }
 
     }

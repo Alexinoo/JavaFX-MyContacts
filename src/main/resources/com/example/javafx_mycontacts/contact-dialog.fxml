@@ -7,7 +7,7 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.javafx_mycontacts.controller.ContactController">
     <headerText>
-        Fill in the the information for the new contact
+        Fill in the information for the new contact
     </headerText>
     <content>
         <GridPane vgap="10" hgap="10">
@@ -21,7 +21,7 @@
             <TextField fx:id="phoneNumberField" GridPane.rowIndex="2" GridPane.columnIndex="1" />
 
             <Label text="Notes: " GridPane.rowIndex="3" GridPane.columnIndex="0" />
-            <TextField fx:id="NotesField" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+            <TextField fx:id="notesField" GridPane.rowIndex="3" GridPane.columnIndex="1" />
         </GridPane>
     </content>
 
