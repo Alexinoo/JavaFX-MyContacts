@@ -1,6 +1,7 @@
 module com.example.javafx_mycontacts {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.xml;
 
 
     opens com.example.javafx_mycontacts to javafx.fxml;
